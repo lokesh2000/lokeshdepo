@@ -94,9 +94,40 @@ public class hb1 {
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//*[@id='leadCampaign.custDetailForm']/div[4]/div[1]/a")).click();
 		Thread.sleep(4000);
-		driver.findElement(By.cssSelector("body > div.alert-wrapper.oldOne > div.alert-box > div > a")).click();
-		driver.findElement(By.xpath("//*[@id='leadCampaign.custDetailForm']/div[4]/div[1]/a")).click();
-		Thread.sleep(3000);
+		try {
+			Boolean a = true;
+			Boolean t =driver.findElement(By.cssSelector("#alert-box-oldOneinside > p.alert-box-title")).isDisplayed();
+			
+			if(t.equals(a)) {
+				driver.findElement(By.cssSelector("#alert-box-oldOneinside > div > a")).click();
+				driver.findElement(By.xpath("//*[@id='leadCampaign.custDetailForm']/div[4]/div[1]/a")).click();
+			}
+			else {
+				System.out.println("no alert occured in sis lead generation page");
+			}
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+		try {
+			
+		Boolean b = true;
+		Boolean r = driver.findElement(By.cssSelector("body > div.alert-wrapper.oldOne > div.alert-box")).isDisplayed();
+		if(r.equals(b)) {
+					driver.findElement(By.cssSelector("body > div.alert-wrapper.oldOne > div.alert-box > div > a")).click();
+					driver.findElement(By.xpath("//*[@id='leadCampaign.custDetailForm']/div[4]/div[1]/a")).click();
+			}
+		else {
+			System.out.println("no alert occured in sis lead generation page");
+		}
+		}
+		catch(Exception e){
+			System.out.println(e);
+			
+		}
+//		driver.findElement(By.cssSelector("body > div.alert-wrapper.oldOne > div.alert-box > div > a")).click();
+//		driver.findElement(By.xpath("//*[@id='leadCampaign.custDetailForm']/div[4]/div[1]/a")).click();
+//		Thread.sleep(3000);
 //		if(String a = driver.findElement(By.id("alert-box-oldOneinside"))equals())
 //		driver.findElement(By.xpath("//*[@id=\"alert-box-oldOneinside\"]/div/a")).click();
 //		if(isAlertPresent(driver)){
@@ -164,6 +195,10 @@ public class hb1 {
 		Thread.sleep(10000); 
 		
 		//SIS calculation Button
+		try {
+			driver.findElement(By.cssSelector("#indexmaindiv > div > div.primary-sis.ng-scope > form > div > a")).click();
+		}
+		finally{
 		Thread.sleep(1000);
 		TakesScreenshot scrshot4 = ((TakesScreenshot)driver);
 		File src4 = scrshot4.getScreenshotAs(OutputType.FILE);
@@ -288,6 +323,7 @@ public class hb1 {
 		Thread.sleep(12000);
 		driver.findElement(By.cssSelector("#health-section-2 > fieldset > div:nth-child(1) > div > div > ul > li > label > span > b:nth-child(1)")).click();
 		//driver.close();
+		}
 		}
 //		//		driver.close();
 
